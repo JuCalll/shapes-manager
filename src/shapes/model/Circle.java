@@ -49,7 +49,7 @@ public final class Circle extends Shape{
     }
 
     @Override
-    public String getDimension(){
+    public String getDimensions(){
         return String.format("center=%s, radius=%.2f", center, radius);
     }
 
