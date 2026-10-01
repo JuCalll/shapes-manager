@@ -31,7 +31,7 @@ public  class Point{
         y += dy;
     }
 
-    public void scaleForm(Point center, double factor){
+    public void scaleFrom(Point center, double factor){
         x = center.x + (x - center.x) * factor;
         y = center.y + (y - center.y) * factor;
     }
