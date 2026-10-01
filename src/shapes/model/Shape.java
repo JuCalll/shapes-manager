@@ -24,7 +24,7 @@ public abstract class Shape implements IDimensionable{
 
     public abstract void move(double dx, double dy);
 
-    public abstract String getDimension();
+    public abstract String getDimensions();
 
     protected abstract void applyScale(double factor);
 
@@ -36,7 +36,7 @@ public abstract class Shape implements IDimensionable{
     public String displayInfo(){
         return String.format(
                 "Type: %s%n Dimensions: %s%n Area: %.2f%n Perimeter: %.2f%n Dimensions: %.2f",
-                type, getDimension(), calculateArea(), calculatePerimeter(), calculateDimension()
+                type, getDimensions(), calculateArea(), calculatePerimeter(), calculateDimension()
         );
     }
 
