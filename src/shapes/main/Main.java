@@ -1,6 +1,11 @@
 package shapes.main;
 
-import shapes.model.*;
+import shapes.model.Circle;
+import shapes.model.Pentagon;
+import shapes.model.Point;
+import shapes.model.Quadrilateral;
+import shapes.model.Shape;
+import shapes.model.Triangle;
 import shapes.controller.ComparisonController;
 import java.util.List;
 
@@ -68,6 +73,8 @@ public class Main {
         Shape triangle = new Triangle(new Point(0, 0), new Point(4, 0), new Point(0, 3));
         Shape sameTriangle = new Triangle(new Point(0, 0), new Point(4, 0), new Point(0, 3));
         System.out.println("Two equal triangles: "+ describeComparison(controller.compare(triangle, sameTriangle)));
+        System.out.println("Shape.compareTo, r=3 vs r=2: "
+                + describeComparison(bigCircle.compareTo(smallCircle)));
 
         expectRejection("Circle vs triangle", () -> controller.compare(smallCircle, triangle));
     }
