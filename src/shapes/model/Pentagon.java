@@ -3,7 +3,7 @@ package shapes.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pentagon extends Shape{
+public final class Pentagon extends Shape{
     private final Point center;
     private double side;
 
