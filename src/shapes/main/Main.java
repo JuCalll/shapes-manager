@@ -1,6 +1,11 @@
 package shapes.main;
 
-import shapes.model.*;
+import shapes.model.Circle;
+import shapes.model.Pentagon;
+import shapes.model.Point;
+import shapes.model.Quadrilateral;
+import shapes.model.Shape;
+import shapes.model.Triangle;
 import shapes.controller.ComparisonController;
 import java.util.List;
 
