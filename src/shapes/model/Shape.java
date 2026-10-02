@@ -1,5 +1,6 @@
 package shapes.model;
 
+import shapes.controller.ComparisonController;
 import shapes.interfaces.IDimensionable;
 
 public abstract class Shape implements IDimensionable{
@@ -45,6 +46,10 @@ public abstract class Shape implements IDimensionable{
             throw  new IllegalArgumentException(name + " must be greater than zero. Received: " + value);
         }
         return  value;
+    }
+
+    public int compareTo(Shape other) {
+        return new ComparisonController().compare(this, other);
     }
 }
 
