@@ -11,7 +11,7 @@ public class ComparisonController {
 
     private void validateSameType(IDimensionable first, IDimensionable second){
         if(!first.getClass().equals(second.getClass())){
-            throw new IllegalArgumentException("Only shapes of the same type can be compare: " + first.getClass().getSimpleName()+ " vs " + second.getClass().getSimpleName());
+            throw new IllegalArgumentException("Only shapes of the same type can be compared: " + first.getClass().getSimpleName()+ " vs " + second.getClass().getSimpleName());
         }
     }
 }
