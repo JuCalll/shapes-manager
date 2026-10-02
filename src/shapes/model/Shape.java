@@ -35,7 +35,7 @@ public abstract class Shape implements IDimensionable{
 
     public String displayInfo(){
         return String.format(
-                "Type: %s%n Dimensions: %s%n Area: %.2f%n Perimeter: %.2f%n Dimensions: %.2f",
+                "Type: %s%n Dimensions: %s%n Area: %.2f%n Perimeter: %.2f%n Dimension: %.2f",
                 type, getDimensions(), calculateArea(), calculatePerimeter(), calculateDimension()
         );
     }
