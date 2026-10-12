@@ -39,7 +39,7 @@ public class MainForm {
     }
 
     private void registerCreationPanels() {
-        // Each creation panel registers its tab here.
+        creationTabs.addTab("Circle", new CirclePanel(this::addShape).getRootPanel());
     }
 
     private void registerOperationsPanel() {
