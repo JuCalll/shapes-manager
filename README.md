@@ -1,14 +1,14 @@
 # Shapes Manager
 
-**Version:** 1.0.0
+**Version:** 1.1.0
 
 Java program to manage geometric shapes: circle, triangle, quadrilateral and pentagon.
 
 ## Team
 
-- Juan Camilo Orozco Londoño — Class diagram, `IDimensionable`, `Point`, `Shape`
-- María Camila Méndez Ramírez — `Circle`, `Triangle`, `Quadrilateral`
-- Miguel Ángel López Betancur — `Pentagon`, `ComparisonController`, `Main`
+- Juan Camilo Orozco Londoño — Class diagram, `IDimensionable`, `IDrawer`, `Point`, `Shape`, `MainForm`, `ShapeCanvas`
+- María Camila Méndez Ramírez — `Circle`, `Triangle`, `Quadrilateral`, their forms and drawing
+- Miguel Ángel López Betancur — `Pentagon`, `ComparisonController`, `OperationsPanel`, `PentagonPanel`, `GraphicsDrawer`
 
 ## Requirements
 
@@ -16,19 +16,11 @@ Java program to manage geometric shapes: circle, triangle, quadrilateral and pen
 
 ## How to run
 
-**Git Bash**
+The graphical interface is built with IntelliJ IDEA's Swing UI Designer, so the project runs from IntelliJ:
 
-```bash
-javac -d out $(find src -name "*.java")
-java -cp out shapes.main.Main
-```
-
-**PowerShell**
-
-```powershell
-javac -d out (Get-ChildItem -Recurse -Filter *.java src).FullName
-java -cp out shapes.main.Main
-```
+1. Open the project and mark `src` as *Sources Root*.
+2. In *Settings → Editor → GUI Designer*, select *Binary class files* and enable *Automatically copy form runtime classes to the output directory*.
+3. Run `shapes.main.Main`.
 
 ## Notes
 

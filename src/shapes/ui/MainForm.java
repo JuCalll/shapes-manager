@@ -1,0 +1,87 @@
+package shapes.ui;
+
+import shapes.model.Shape;
+
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import java.awt.Component;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.awt.BorderLayout;
+
+public class MainForm {
+
+    private JPanel rootPanel;
+    private JTabbedPane creationTabs;
+    private JList<Shape> shapeList;
+    private JTextArea infoArea;
+    private JPanel operationsContainer;
+    private ShapeCanvas canvas;
+
+    private final DefaultListModel<Shape> shapes = new DefaultListModel<>();
+
+    public MainForm() {
+        configureShapeList();
+        registerCreationPanels();
+        registerOperationsPanel();
+    }
+
+    public JPanel getRootPanel() {
+        return rootPanel;
+    }
+
+    private void configureShapeList() {
+        shapeList.setModel(shapes);
+        shapeList.setCellRenderer(new ShapeRenderer());
+        shapeList.addListSelectionListener(e -> refreshView());
+    }
+
+    private void registerCreationPanels() {
+        creationTabs.addTab("Circle", new CirclePanel(this::addShape).getRootPanel());
+        creationTabs.addTab("Triangle", new TrianglePanel(this::addShape).getRootPanel());
+        creationTabs.addTab("Quadrilateral", new QuadrilateralPanel(this::addShape).getRootPanel());
+        creationTabs.addTab("Pentagon", new PentagonPanel(this::addShape).getRootPanel());
+    }
+
+    private void registerOperationsPanel() {
+        OperationsPanel operations = new OperationsPanel(this::getSelectedShapes,this::refreshView);
+        operationsContainer.add(operations.getRootPanel(), BorderLayout.CENTER);
+    }
+
+    private void addShape(Shape shape) {
+        shapes.addElement(shape);
+        shapeList.setSelectedIndex(shapes.size() - 1);
+    }
+
+    private List<Shape> getSelectedShapes() {
+        return shapeList.getSelectedValuesList();
+    }
+
+    private void refreshView() {
+        List<Shape> selected = getSelectedShapes();
+        infoArea.setText(selected.stream()
+                .map(Shape::displayInfo)
+                .collect(Collectors.joining("\n\n")));
+        canvas.showShapes(Collections.list(shapes.elements()), selected);
+        shapeList.repaint();
+    }
+
+    private static class ShapeRenderer extends DefaultListCellRenderer {
+
+        private static final long serialVersionUID = 1L;
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index,
+                                                      boolean isSelected, boolean cellHasFocus) {
+            super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            Shape shape = (Shape) value;
+            setText((index + 1) + ". " + shape.getType());
+            return this;
+        }
+    }
+}

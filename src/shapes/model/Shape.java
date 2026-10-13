@@ -2,6 +2,7 @@ package shapes.model;
 
 import shapes.controller.ComparisonController;
 import shapes.interfaces.IDimensionable;
+import shapes.interfaces.IDrawer;
 
 public abstract class Shape implements IDimensionable{
 
@@ -26,6 +27,8 @@ public abstract class Shape implements IDimensionable{
     public abstract void move(double dx, double dy);
 
     public abstract String getDimensions();
+
+    public abstract void draw(IDrawer drawer);
 
     protected abstract void applyScale(double factor);
 

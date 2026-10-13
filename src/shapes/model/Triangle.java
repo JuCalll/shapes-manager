@@ -1,4 +1,5 @@
 package shapes.model;
+import shapes.interfaces.IDrawer;
 
 /**
  * @author Camila Méndez
@@ -69,5 +70,12 @@ public final class Triangle extends Shape{
     protected void applyScale(double factor) {
         b.scaleFrom(a,factor);
         c.scaleFrom(a,factor);
+    }
+
+    @Override
+    public void draw(IDrawer drawer) {
+        drawer.drawPolygon(
+                new double[]{a.getX(), b.getX(), c.getX()},
+                new double[]{a.getY(), b.getY(), c.getY()});
     }
 }

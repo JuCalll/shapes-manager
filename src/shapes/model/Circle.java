@@ -1,4 +1,5 @@
 package shapes.model;
+import shapes.interfaces.IDrawer;
 
 /**
  * @author Camila Méndez
@@ -53,5 +54,8 @@ public final class Circle extends Shape{
         return String.format("center=%s, radius=%.2f", center, radius);
     }
 
-
+    @Override
+    public void draw(IDrawer drawer) {
+        drawer.drawCircle(center.getX(), center.getY(), radius);
+    }
 }

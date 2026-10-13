@@ -1,4 +1,5 @@
 package shapes.model;
+import shapes.interfaces.IDrawer;
 
 /**
  * @author Camila Méndez
@@ -62,6 +63,13 @@ public final class Quadrilateral extends Shape {
     public String getDimensions() {
         return String.format("vertices=%s %s %s %s, diagonals=%.2f and %.2f",
                 a,b,c,d, calculateMajorDiagonal(), calculateMinorDiagonal());
+    }
+
+    @Override
+    public void draw(IDrawer drawer) {
+        drawer.drawPolygon(
+                new double[]{a.getX(), b.getX(), c.getX(), d.getX()},
+                new double[]{a.getY(), b.getY(), c.getY(), d.getY()});
     }
 
     @Override
