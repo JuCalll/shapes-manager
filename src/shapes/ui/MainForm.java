@@ -11,6 +11,7 @@ import javax.swing.JTextArea;
 import java.awt.Component;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.awt.BorderLayout;
 
 public class MainForm {
 
@@ -46,7 +47,8 @@ public class MainForm {
     }
 
     private void registerOperationsPanel() {
-        // The operations panel is registered here.
+        OperationsPanel operations = new OperationsPanel(this::getSelectedShapes,this::refreshInfo);
+        operationsContainer.add(operations.getRootPanel(), BorderLayout.CENTER);
     }
 
     private void addShape(Shape shape) {
