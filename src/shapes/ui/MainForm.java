@@ -40,7 +40,9 @@ public class MainForm {
     }
 
     private void registerCreationPanels() {
-        // Each creation panel registers its tab here.
+        creationTabs.addTab("Circle", new CirclePanel(this::addShape).getRootPanel());
+        creationTabs.addTab("Triangle", new TrianglePanel(this::addShape).getRootPanel());
+        creationTabs.addTab("Quadrilateral", new QuadrilateralPanel(this::addShape).getRootPanel());
     }
 
     private void registerOperationsPanel() {
