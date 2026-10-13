@@ -1,5 +1,7 @@
 package shapes.model;
 
+import shapes.interfaces.IDrawer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,5 +70,17 @@ public final class Pentagon extends Shape{
     @Override
     public String getDimensions(){
         return String.format("center=%s, side=%.2f, apothem=%.2f", center,side,calculateApothem());
+    }
+
+    @Override
+    public void draw(IDrawer drawer){
+        List<Point> vertices = calculateVertices();
+        double[] xPoints = new double[vertices.size()];
+        double[] yPoints = new double[vertices.size()];
+        for(int i = 0; i < vertices.size(); i++){
+            xPoints[i] = vertices.get(i).getX();
+            yPoints[i] = vertices.get(i).getY();
+        }
+        drawer.drawPolygon(xPoints,yPoints);
     }
 }
