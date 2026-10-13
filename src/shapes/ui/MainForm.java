@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import java.awt.Component;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.awt.BorderLayout;
@@ -20,6 +21,7 @@ public class MainForm {
     private JList<Shape> shapeList;
     private JTextArea infoArea;
     private JPanel operationsContainer;
+    private ShapeCanvas canvas;
 
     private final DefaultListModel<Shape> shapes = new DefaultListModel<>();
 
@@ -36,7 +38,7 @@ public class MainForm {
     private void configureShapeList() {
         shapeList.setModel(shapes);
         shapeList.setCellRenderer(new ShapeRenderer());
-        shapeList.addListSelectionListener(e -> refreshInfo());
+        shapeList.addListSelectionListener(e -> refreshView());
     }
 
     private void registerCreationPanels() {
@@ -47,7 +49,7 @@ public class MainForm {
     }
 
     private void registerOperationsPanel() {
-        OperationsPanel operations = new OperationsPanel(this::getSelectedShapes,this::refreshInfo);
+        OperationsPanel operations = new OperationsPanel(this::getSelectedShapes,this::refreshView);
         operationsContainer.add(operations.getRootPanel(), BorderLayout.CENTER);
     }
 
@@ -60,10 +62,12 @@ public class MainForm {
         return shapeList.getSelectedValuesList();
     }
 
-    private void refreshInfo() {
-        infoArea.setText(getSelectedShapes().stream()
+    private void refreshView() {
+        List<Shape> selected = getSelectedShapes();
+        infoArea.setText(selected.stream()
                 .map(Shape::displayInfo)
                 .collect(Collectors.joining("\n\n")));
+        canvas.showShapes(Collections.list(shapes.elements()), selected);
         shapeList.repaint();
     }
 
