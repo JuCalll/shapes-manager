@@ -65,7 +65,7 @@ public final class Quadrilateral extends Shape {
                 a,b,c,d, calculateMajorDiagonal(), calculateMinorDiagonal());
     }
 
-        @Override
+    @Override
     public void draw(IDrawer drawer) {
         drawer.drawPolygon(
                 new double[]{a.getX(), b.getX(), c.getX(), d.getX()},

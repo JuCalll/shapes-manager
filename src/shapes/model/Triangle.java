@@ -72,7 +72,7 @@ public final class Triangle extends Shape{
         c.scaleFrom(a,factor);
     }
 
-        @Override
+    @Override
     public void draw(IDrawer drawer) {
         drawer.drawPolygon(
                 new double[]{a.getX(), b.getX(), c.getX()},
